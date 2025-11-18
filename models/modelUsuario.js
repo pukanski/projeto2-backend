@@ -20,6 +20,14 @@ module.exports = (sequelize, Sequelize) => {
         senha: {
             type: Sequelize.STRING,
             allowNull: false
+        },
+        resetPasswordToken: {
+            type: Sequelize.STRING,
+            allowNull: true
+        },
+        resetPasswordExpires: {
+            type: Sequelize.DATE,
+            allowNull: true
         }
     });
 
