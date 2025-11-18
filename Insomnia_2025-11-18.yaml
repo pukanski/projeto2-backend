@@ -1,0 +1,1290 @@
+type: collection.insomnia.rest/5.0
+name: Hotel
+meta:
+  id: wrk_607466ca3d1e4ec88f00692544bf8847
+  created: 1763442476612
+  modified: 1763442476612
+  description: ""
+collection:
+  - url: http://localhost:8081/quartos
+    name: "Tentando Acessar Quartos Sem Token [Status: 401]"
+    meta:
+      id: req_9ece521d3e7a41f3b32ab93fbbdc16b1
+      created: 1763444096119
+      modified: 1763502394002
+      isPrivate: false
+      description: ""
+      sortKey: -1762065579827
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - name: Com Token
+    meta:
+      id: fld_cafebbb0c3e941b8aa29470cf0587fe3
+      created: 1763443974424
+      modified: 1763504191430
+      sortKey: -1763443974424
+      description: ""
+    children:
+      - name: Clientes
+        meta:
+          id: fld_d0b25bdfeb444f8ca01f7fe36f43779b
+          created: 1763500084305
+          modified: 1763500084305
+          sortKey: -1763500084305
+          description: ""
+        children:
+          - url: http://localhost:8081/clientes
+            name: "Criar cliente com cpf duplicado [Status: 409]"
+            meta:
+              id: req_32f35671a20b4902987688082aee582a
+              created: 1763444295783
+              modified: 1763500224183
+              isPrivate: false
+              description: ""
+              sortKey: -1763500091222
+            method: POST
+            body:
+              mimeType: application/json
+              text: '{"nome": "Outra Ana", "email": "outro@email.com", "cpf":
+                "111.111.111-11"}'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/clientes
+            name: "Criando Cliente com Campos Vazios [Status: 400]"
+            meta:
+              id: req_f3b65b471dcf4248867fb9bf9a30996f
+              created: 1763446957926
+              modified: 1763500156149
+              isPrivate: false
+              description: ""
+              sortKey: -1763500091422
+            method: POST
+            body:
+              mimeType: application/json
+              text: "{}"
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/clientes
+            name: "Criando Cliente Validação Inválida [Status: 400]"
+            meta:
+              id: req_a18d3d14bb02438ca82f1bff3944d568
+              created: 1763500091322
+              modified: 1763500192053
+              isPrivate: false
+              description: ""
+              sortKey: -1763500091322
+            method: POST
+            body:
+              mimeType: application/json
+              text: '{ "nome": "ab", "email": "nao-e-um-email", "cpf": "123" }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/clientes
+            name: "Criando Cliente Teste [Status: 201]"
+            meta:
+              id: req_4797eee69298462eb13cdf9f13358a8b
+              created: 1763500256389
+              modified: 1763500308875
+              isPrivate: false
+              description: ""
+              sortKey: -1763500256389
+            method: POST
+            body:
+              mimeType: application/json
+              text: '{ "nome": "Cliente Teste", "email": "teste@valido.com", "cpf":
+                "999.999.999-99" }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/clientes/999
+            name: "Buscando Cliente Inexistente [Status: 404]"
+            meta:
+              id: req_b70d8add243b46a3bfd34e1932f6be81
+              created: 1763500320115
+              modified: 1763500407462
+              isPrivate: false
+              description: ""
+              sortKey: -1763500320115
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/clientes/999
+            name: "Atualizando Cliente Inexistente [Status: 404]"
+            meta:
+              id: req_da12b8956c0c4c1b9c4f77b7e71deb05
+              created: 1763500378428
+              modified: 1763500419030
+              isPrivate: false
+              description: ""
+              sortKey: -1763500320215
+            method: PUT
+            body:
+              mimeType: application/json
+              text: '{ "nome": "Fantasma", "email": "fantasma@teste.com", "cpf":
+                "000.000.000-00" }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/clientes/1
+            name: "Atualizando Validação Inválida [Status: 400]"
+            meta:
+              id: req_3d815eba80e44778829eaf7bf365161a
+              created: 1763500463269
+              modified: 1763500513886
+              isPrivate: false
+              description: ""
+              sortKey: -1763500463269
+            method: PUT
+            body:
+              mimeType: application/json
+              text: '{ "nome": "OK", "email": "email-invalido", "cpf": "123" }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/clientes/1
+            name: "Atualizando CPF Duplicado [Status: 409]"
+            meta:
+              id: req_cc6c6692aff04895a3492d4c8b9bd983
+              created: 1763500594239
+              modified: 1763500632308
+              isPrivate: false
+              description: ""
+              sortKey: -1763500594239
+            method: PUT
+            body:
+              mimeType: application/json
+              text: '{ "nome": "Ana Silva", "email": "ana.silva@teste.com", "cpf":
+                "222.222.222-22"}'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/clientes/1
+            name: "Atualizando Sucesso [Status: 200]"
+            meta:
+              id: req_c569af9b397e4fd8b04f42f76891e09b
+              created: 1763500693608
+              modified: 1763500725345
+              isPrivate: false
+              description: ""
+              sortKey: -1763500693608
+            method: PUT
+            body:
+              mimeType: application/json
+              text: '{ "nome": "Ana Silva ATUALIZADA", "email": "ana.silva@teste.com", "cpf":
+                "111.111.111-11" }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/clientes/999
+            name: "Deletar Cliente Inexistente [Status: 404]"
+            meta:
+              id: req_fc78966cb3344285b98f8ee6f3fc2a60
+              created: 1763500853595
+              modified: 1763500881942
+              isPrivate: false
+              description: ""
+              sortKey: -1763500853595
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/clientes/1
+            name: "Deletar Cliente com Reserva[Status: 409]"
+            meta:
+              id: req_556a759753564884bfbe80ae9b88df39
+              created: 1763500907652
+              modified: 1763500910868
+              isPrivate: false
+              description: ""
+              sortKey: -1763500773601.5
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/clientes/4
+            name: "Deletar Sucesso [Status: 204]"
+            meta:
+              id: req_55efce32015a46249dcadd15de9daca5
+              created: 1763501060184
+              modified: 1763501087127
+              isPrivate: false
+              description: ""
+              sortKey: -1763501060184
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/clientes
+            name: "GetAll Clientes [Status: 200]"
+            meta:
+              id: req_3d6a4981a68a4b43ab4232e57ce3012d
+              created: 1763502235973
+              modified: 1763502258795
+              isPrivate: false
+              description: ""
+              sortKey: -1763500288252
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Quartos
+        meta:
+          id: fld_d43c78130dd54d3483f091ff260544e2
+          created: 1763501109126
+          modified: 1763501109126
+          sortKey: -1763501109126
+          description: ""
+        children:
+          - url: http://localhost:8081/quartos
+            name: "Get All Quartos [Status: 200]"
+            meta:
+              id: req_04c2397ba730432e99f2b468a8e713db
+              created: 1763444017611
+              modified: 1763502268765
+              isPrivate: false
+              description: ""
+              sortKey: -1763501933679
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/quartos/1
+            name: "Deletar quarto com reserva ativa [Status: 409]"
+            meta:
+              id: req_657cf2f5fe3d49879690c4648c7db98c
+              created: 1763444494367
+              modified: 1763502312254
+              isPrivate: false
+              description: ""
+              sortKey: -1763502278171
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/quartos/
+            name: "Criar com campos Vazios [Status: 400]"
+            meta:
+              id: req_d8abd81e408844e899e9011510ebb67f
+              created: 1763501641942
+              modified: 1763501685377
+              isPrivate: false
+              description: ""
+              sortKey: -1763501641942
+            method: POST
+            body:
+              mimeType: application/json
+              text: "{}"
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/quartos/
+            name: "Criar com Campos Inválidos[Status: 400]"
+            meta:
+              id: req_af25904eddf247048a99b9faaaec37d3
+              created: 1763501740008
+              modified: 1763501746553
+              isPrivate: false
+              description: ""
+              sortKey: -1763501351063
+            method: POST
+            body:
+              mimeType: application/json
+              text: '{ "numero": "505", "tipo": "Suite Presidencial", "preco_diaria": "-100",
+                "status": "Livre" }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/quartos/
+            name: "Criar com Num de Quarto Existente [Status: 409]"
+            meta:
+              id: req_edfacba849724f92bc413bdcb08dff4a
+              created: 1763501841441
+              modified: 1763501887955
+              isPrivate: false
+              description: ""
+              sortKey: -1763501841441
+            method: POST
+            body:
+              mimeType: application/json
+              text: '{ "numero": "101", "tipo": "Standard", "preco_diaria": "150", "status":
+                "Disponivel" }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/quartos/
+            name: "Criar Sucesso [Status: 201]"
+            meta:
+              id: req_866c6292932c421f854f2b411ba5b515
+              created: 1763501905485
+              modified: 1763501922601
+              isPrivate: false
+              description: ""
+              sortKey: -1763501350963
+            method: POST
+            body:
+              mimeType: application/json
+              text: '{ "numero": "102", "tipo": "Standard", "preco_diaria": "150", "status":
+                "Disponivel" }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/quartos/999
+            name: "Buscando Quarto Inexistente [Status: 404]"
+            meta:
+              id: req_59f64080c0994f6483cf6ad7629d9149
+              created: 1763501964425
+              modified: 1763502011833
+              isPrivate: false
+              description: ""
+              sortKey: -1763501964425
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/quartos/999
+            name: "Atualizando Quarto Inexistente [Status: 404]"
+            meta:
+              id: req_53c0166de7e84aff9591f193dce29224
+              created: 1763502023698
+              modified: 1763502045774
+              isPrivate: false
+              description: ""
+              sortKey: -1763501902933
+            method: PUT
+            body:
+              mimeType: application/json
+              text: '{ "numero": "999", "tipo": "Standard", "preco_diaria": "100", "status":
+                "Disponivel" }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/quartos/1
+            name: "Atualizando Sucesso [Status: 200]"
+            meta:
+              id: req_83f10422730e4c5786bfa2d2a93f542e
+              created: 1763502177871
+              modified: 1763502193216
+              isPrivate: false
+              description: ""
+              sortKey: -1763501872187
+            method: PUT
+            body:
+              mimeType: application/json
+              text: '{ "numero": "101", "tipo": "Standard", "preco_diaria": "999.99",
+                "status": "Manutencao" }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/quartos/999
+            name: "Deletar Quarto Inexistente [Status: 404]"
+            meta:
+              id: req_a21908ad23954c75892b369deeb4ae9e
+              created: 1763502278071
+              modified: 1763502319993
+              isPrivate: false
+              description: ""
+              sortKey: -1763502278071
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/quartos/5
+            name: "Deletar Sucesso [Status: 204]"
+            meta:
+              id: req_c56f50d20f1944dab1487d71c7d55409
+              created: 1763502346158
+              modified: 1763502352698
+              isPrivate: false
+              description: ""
+              sortKey: -1763502121248
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Reservas
+        meta:
+          id: fld_4b51ba480b6e4380a97955a375adf4b2
+          created: 1763503886048
+          modified: 1763503886048
+          sortKey: -1763503886048
+          description: ""
+        children:
+          - url: http://localhost:8081/reservas
+            name: "Criar - Validação Inválida[Status: 400]"
+            meta:
+              id: req_b2b29c300e534e179a920961c7ea35db
+              created: 1763444218468
+              modified: 1763504142868
+              isPrivate: false
+              description: ""
+              sortKey: -1763503899418
+            method: POST
+            body:
+              mimeType: application/json
+              text: '{ "cliente_id": "a", "quarto_id": "b", "data_checkin": "ontem",
+                "data_checkout": "amanha" }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/reservas
+            name: "Get All reservas [Status: 200]"
+            meta:
+              id: req_17a1dec8b30b4344ac056e54b9474422
+              created: 1763444349212
+              modified: 1763503899338
+              isPrivate: false
+              description: ""
+              sortKey: -1763503899318
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/reservas
+            name: "Criar - Checkout Antes de Checkin [Status: 400]"
+            meta:
+              id: req_7489f3715bde46ae84ccd7ce990c33e9
+              created: 1763503991787
+              modified: 1763504130701
+              isPrivate: false
+              description: ""
+              sortKey: -1763503991787
+            method: POST
+            body:
+              mimeType: application/json
+              text: '{ "cliente_id": 1, "quarto_id": 2, "data_checkin":
+                "2025-12-10T14:00:00Z", "data_checkout": "2025-12-09T12:00:00Z"
+                }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/reservas
+            name: "Criar - Checkin no passado [Status: 400]"
+            meta:
+              id: req_8c62937aee0e4c69bbed0ebf9a9ed1a2
+              created: 1763504166297
+              modified: 1763504175513
+              isPrivate: false
+              description: ""
+              sortKey: -1763503945602.5
+            method: POST
+            body:
+              mimeType: application/json
+              text: '{ "cliente_id": 1, "quarto_id": 1, "data_checkin":
+                "2024-11-20T14:00:00Z", "data_checkout": "2024-11-22T12:00:00Z"
+                }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/reservas
+            name: "Criar - Com Quarto Inexistente [Status: 404]"
+            meta:
+              id: req_5538953a143a459a8b24bb77ef6474e0
+              created: 1763504254647
+              modified: 1763504280134
+              isPrivate: false
+              description: ""
+              sortKey: -1763503968694.75
+            method: POST
+            body:
+              mimeType: application/json
+              text: '{ "cliente_id": 1, "quarto_id": 999, "data_checkin":
+                "2025-12-10T14:00:00Z", "data_checkout": "2025-12-09T12:00:00Z"
+                }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/reservas
+            name: "Criar - Overbooking [Status: 409]"
+            meta:
+              id: req_cb0c0ad5e5a4487bacefe49d94eea6e7
+              created: 1763504327955
+              modified: 1763504338366
+              isPrivate: false
+              description: ""
+              sortKey: -1763503980240.875
+            method: POST
+            body:
+              mimeType: application/json
+              text: '{ "cliente_id": 1, "quarto_id": 3, "data_checkin":
+                "2025-12-01T14:00:00Z", "data_checkout": "2025-12-05T12:00:00Z"
+                }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/reservas
+            name: "Criar - Double-Booking [Status: 409]"
+            meta:
+              id: req_e470a1e63af147a9bbeb4e023090540e
+              created: 1763504400962
+              modified: 1763504770068
+              isPrivate: false
+              description: ""
+              sortKey: -1763503974467.8125
+            method: POST
+            body:
+              mimeType: application/json
+              text: '{ "cliente_id": 1, "quarto_id": 2, "data_checkin":
+                "2025-12-01T14:00:00Z", "data_checkout": "2025-12-05T12:00:00Z"
+                }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/reservas
+            name: "Criar - Sucesso [Status: 201]"
+            meta:
+              id: req_599cb8b2401d443fb9f7b204cdb11cff
+              created: 1763504532469
+              modified: 1763506056568
+              isPrivate: false
+              description: ""
+              sortKey: -1763504532469
+            method: POST
+            body:
+              mimeType: application/json
+              text: '{ "cliente_id": 2, "quarto_id": 6, "data_checkin":
+                "2025-12-01T14:00:00Z", "data_checkout": "2025-12-05T12:00:00Z"
+                }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/reservas/999
+            name: "Buscando Reserva Inexistente [Status: 404]"
+            meta:
+              id: req_808c27b7d80f4fd9aa2aadc0808fd956
+              created: 1763504956571
+              modified: 1763505002393
+              isPrivate: false
+              description: ""
+              sortKey: -1763504956571
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/reservas/999
+            name: "Atualizando Reserva Inexistente [Status: 404]"
+            meta:
+              id: req_5f5458a56a8e46d1951f13b8316e3de2
+              created: 1763505011184
+              modified: 1763505320314
+              isPrivate: false
+              description: ""
+              sortKey: -1763504956671
+            method: PUT
+            body:
+              mimeType: application/json
+              text: '{ "cliente_id": 1, "quarto_id": 1, "data_checkin":
+                "2025-12-01T14:00:00Z", "data_checkout": "2025-12-05T12:00:00Z",
+                "status": "Cancelada" }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/reservas/1
+            name: "Atualizando - Validação Inválida [Status: 400]"
+            meta:
+              id: req_530fb46326a24b93afd52b4dc4d747fb
+              created: 1763505508238
+              modified: 1763505521890
+              isPrivate: false
+              description: ""
+              sortKey: -1763504956771
+            method: PUT
+            body:
+              mimeType: application/json
+              text: '{ "data_checkin": "2025-11-25T14:00:00Z", "data_checkout":
+                "2025-11-24T12:00:00Z" }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/reservas/1
+            name: "Atualizando - Checkin no Passado [Status: 400]"
+            meta:
+              id: req_1066b3cbb62b48e9a1dba0259da43780
+              created: 1763505868504
+              modified: 1763505872974
+              isPrivate: false
+              description: ""
+              sortKey: -1763504956721
+            method: PUT
+            body:
+              mimeType: application/json
+              text: '{ "data_checkin": "2024-11-20T14:00:00Z", "data_checkout":
+                "2024-11-22T12:00:00Z" }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/reservas/1
+            name: "Atualizando - Overbooking [Status: 409]"
+            meta:
+              id: req_aee6741589f44510aafea8d359f9e5d0
+              created: 1763505913322
+              modified: 1763505928288
+              isPrivate: false
+              description: ""
+              sortKey: -1763504956871
+            method: PUT
+            body:
+              mimeType: application/json
+              text: '{ "quarto_id": 3 }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/reservas/2
+            name: "Atualizando - Double-Booking [Status: 409]"
+            meta:
+              id: req_9970871275c34a14a504aadfd7990009
+              created: 1763505957461
+              modified: 1763506189743
+              isPrivate: false
+              description: ""
+              sortKey: -1763504956821
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "quarto_id": 6,
+                  "data_checkin": "2025-12-01T11:00:00-03:00",
+                  "data_checkout": "2025-12-05T09:00:00-03:00"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/reservas/1
+            name: "Atualizando - Sucesso [Status: 200]"
+            meta:
+              id: req_3e09f593784b40549287cef5fbe31c8c
+              created: 1763506249707
+              modified: 1763506336569
+              isPrivate: false
+              description: ""
+              sortKey: -1763504956971
+            method: PUT
+            body:
+              mimeType: application/json
+              text: '{ "quarto_id": 6 }'
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8081/reservas/1
+            name: "Deletar - Sucesso [Status: 204]"
+            meta:
+              id: req_4ad812e5410849fa8c183c543706f913
+              created: 1763506346818
+              modified: 1763506355732
+              isPrivate: false
+              description: ""
+              sortKey: -1763504957071
+            method: DELETE
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/12.0.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBob3RlbC5jb20iLCJpYXQiOjE3NjM1MDQxODUsImV4cCI6MTc2MzUwNzc4NX0.DY82sEuJCjFwRp5s98yNwX66N3HgzKHTxHELMn2uxJY
+      prefix: "Bearer "
+  - name: Auth
+    meta:
+      id: fld_a75e6fbb525744c393d2ac39600b6967
+      created: 1763501767546
+      modified: 1763501767546
+      sortKey: -1763501767546
+      description: ""
+    children:
+      - url: http://localhost:8081/login
+        name: "Login - Sucesso [Status: 200]"
+        meta:
+          id: req_f0b3519ae2ff45c289d460bbe35e1c8c
+          created: 1763442492799
+          modified: 1763501797031
+          isPrivate: false
+          description: ""
+          sortKey: -1763501774756
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{"email": "admin@hotel.com", "senha": "123"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        authentication:
+          type: none
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8081/login
+        name: "Login - Credenciais Erradas [Status: 401]"
+        meta:
+          id: req_4b5c124adf5f4612a05cb4dc7dab40cc
+          created: 1763444044874
+          modified: 1763501801148
+          isPrivate: false
+          description: ""
+          sortKey: -1763501774956
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{"email": "admin@hotel.com", "senha": "1234"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        authentication:
+          type: none
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8081/login
+        name: "Login - JSON vazio [Status: 400]"
+        meta:
+          id: req_35c523ae9ad54d4fb9c263c64a4e6679
+          created: 1763494734424
+          modified: 1763501799216
+          isPrivate: false
+          description: ""
+          sortKey: -1763501774856
+        method: POST
+        body:
+          mimeType: application/json
+          text: "{}"
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8081/esqueciSenha
+        name: "Esqueci Senha - Sucesso [Status: 200]"
+        meta:
+          id: req_cf61f4caf8224edfbfd022f2a8b5a90e
+          created: 1763495836813
+          modified: 1763501794468
+          isPrivate: false
+          description: ""
+          sortKey: -1763501774631
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{ "email": "admin@hotel.com" }'
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8081/resetarSenha
+        name: "Resetar Senha - Sucesso [Status: 200]"
+        meta:
+          id: req_754b3bc5de2a4ed397a0cfe3f1805917
+          created: 1763496682071
+          modified: 1763501780899
+          isPrivate: false
+          description: ""
+          sortKey: -1763501774556
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{"token": "b4f98262767fdc7f62c1695dafe725fb9b1acfab", "novaSenha":
+            "novasenha123"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8081/login
+        name: "Login Nova Senha - Sucesso [Status: 200]"
+        meta:
+          id: req_1f323eb45ce24f4881a83ade3efd9c67
+          created: 1763496796912
+          modified: 1763501805325
+          isPrivate: false
+          description: ""
+          sortKey: -1763501774456
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{"email": "admin@hotel.com", "senha": "novasenha123"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        authentication:
+          type: none
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8081/resetarSenha
+        name: "Resetar Senha - Falha Token Errado [Status: 400]"
+        meta:
+          id: req_30b7890e130d4fc888b4970a0b1fdea1
+          created: 1763496851148
+          modified: 1763501791487
+          isPrivate: false
+          description: ""
+          sortKey: -1763501774606
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{"token": "b4f98262767fdc7f32c1695dafe725fb9b1acfab", "novaSenha":
+            "novasenha123"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.0.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_cbb53879e03df1afae8b587feb6690afbb47e49d
+    created: 1763442476615
+    modified: 1763442476615
+environments:
+  name: Base Environment
+  meta:
+    id: env_cbb53879e03df1afae8b587feb6690afbb47e49d
+    created: 1763442476614
+    modified: 1763443525990
+    isPrivate: false
+  data:
+    "": ""
