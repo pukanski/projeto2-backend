@@ -3,12 +3,13 @@ const cors = require('cors');
 const app = express();
 const port = 8081; 
 const db = require('./models');
+const auth = require('./middleware/auth');
 
 app.use(cors());
 app.use(express.json());
 
 // routes
-app.use('/auth', auth, require('./routes/routeAuth'));
+app.use('/', require('./routes/routeAuth'));
 app.use('/clientes', auth, require('./routes/routeCliente'));
 app.use('/quartos', auth, require('./routes/routeQuarto'));
 app.use('/reservas', auth, require('./routes/routeReserva'));

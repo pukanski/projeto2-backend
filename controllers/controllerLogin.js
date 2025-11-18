@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
-const Usuario = require('../models/modelUsuario');
-
-const JWT_SENHA = 'segredo';
+const { Usuario } = require('../models'); 
+const JWT_SECRET = 'segredo';
 
 exports.postLogin = async (req, res) => {
     try {
@@ -22,8 +21,8 @@ exports.postLogin = async (req, res) => {
             email: usuario.email
         };
 
-        const token = jwt.sign(payload, JWT_SENHA, {
-            expiresIn: '1h'
+        const token = jwt.sign(payload, JWT_SECRET, {
+            expiresIn: '1h' 
         });
 
         res.status(200).json({

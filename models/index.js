@@ -13,10 +13,10 @@ db.Cliente = require('./modelCliente.js')(sequelize, Sequelize);
 db.Quarto = require('./modelQuarto.js')(sequelize, Sequelize);
 db.Reserva = require('./modelReserva.js')(sequelize, Sequelize);
 
-db.Cliente.hasMany(db.Reserva, { foreignKey: 'cliente_id' });
+db.Cliente.hasMany(db.Reserva, { foreignKey: 'cliente_id', onDelete: 'RESTRICT'});
 db.Reserva.belongsTo(db.Cliente, { foreignKey: 'cliente_id' });
 
-db.Quarto.hasMany(db.Reserva, { foreignKey: 'quarto_id' });
+db.Quarto.hasMany(db.Reserva, { foreignKey: 'quarto_id', onDelete: 'RESTRICT' });
 db.Reserva.belongsTo(db.Quarto, { foreignKey: 'quarto_id' });
 
 module.exports = db;

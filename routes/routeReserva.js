@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const controllerReserva = require('../controllers/controllerReserva');
+const controller = require('../controllers/controllerReserva');
+const { validaReserva, validar } = require('../validators/validatorReserva');
 
-router.post('/', controllerReserva.create);
-router.get('/', controllerReserva.getAll);
-router.get('/:id', controllerReserva.getById);
-router.put('/:id', controllerReserva.update);
-router.delete('/:id', controllerReserva.delete);
+router.post('/', validaReserva(), validar, controller.create);
+router.put('/:id', validaReserva(), validar, controller.update);
+
+router.get('/', controller.getAll);
+router.get('/:id', controller.getById);
+router.delete('/:id', controller.delete);
 
 module.exports = router;
