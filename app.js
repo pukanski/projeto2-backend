@@ -1,22 +1,28 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = 8081; 
+const db = require('./models');
 
-const sequelize = require('./config/configSequelize');
-
-
-try {
-  sequelize.authenticate();
-  console.log('Conexão com o bd estabelecida com sucesso.');
-} catch (error) {
-  console.error('Não foi possível conectar ao banco de dados:', error);
-  process.exit(1);
-}
-
+app.use(cors());
 app.use(express.json());
 
-// rotas
+// routes
+app.use('/auth', auth, require('./routes/routeAuth'));
+app.use('/clientes', auth, require('./routes/routeCliente'));
+app.use('/quartos', auth, require('./routes/routeQuarto'));
+app.use('/reservas', auth, require('./routes/routeReserva'));
 
-app.listen(port, () => {
-  console.log(`Servidor no http://localhost:${port}`);
-});
+db.sequelize.authenticate()
+  .then(() => {
+    console.log('Conexão com o bd estabelecida com sucesso.');
+    
+    db.sequelize.sync(); 
+    
+    app.listen(port, () => {
+      console.log(`Servidor no http://localhost:${port}`);
+    });
+  })
+  .catch(err => {
+    console.error('Não foi possível conectar ao banco de dados:', err);
+  });
