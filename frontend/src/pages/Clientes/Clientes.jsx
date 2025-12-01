@@ -3,19 +3,15 @@ import api from '../../api/axios';
 import { Modal, Button, Form, Table, Alert, Spinner, InputGroup, FormControl } from 'react-bootstrap';
 
 export default function Clientes() {
-  // --- ESTADOS ---
   const [clientes, setClientes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Estado da Busca
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Estados do Modal
   const [showModal, setShowModal] = useState(false);
   const [modalMode, setModalMode] = useState('create');
   
-  // Estado do Formulário
   const [formData, setFormData] = useState({
     id: '',
     nome: '',
@@ -26,15 +22,14 @@ export default function Clientes() {
 
   const [formError, setFormError] = useState(null);
 
-  // --- FUNÇÕES UTILITÁRIAS (MÁSCARAS) ---
   
   const maskCPF = (value) => {
     return value
-      .replace(/\D/g, '') // Remove tudo o que não é dígito
-      .replace(/(\d{3})(\d)/, '$1.$2') // Coloca ponto após o 3º digito
-      .replace(/(\d{3})(\d)/, '$1.$2') // Coloca ponto após o 6º digito
-      .replace(/(\d{3})(\d{1,2})/, '$1-$2') // Coloca hífen antes dos últimos 2
-      .replace(/(-\d{2})\d+?$/, '$1'); // Impede entrar mais caracteres
+      .replace(/\D/g, '')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d{1,2})/, '$1-$2') 
+      .replace(/(-\d{2})\d+?$/, '$1');
   };
 
   const maskPhone = (value) => {
@@ -44,8 +39,6 @@ export default function Clientes() {
       .replace(/(\d{5})(\d)/, '$1-$2')
       .replace(/(-\d{4})\d+?$/, '$1');
   };
-
-  // --- FUNÇÕES DE API ---
 
   const fetchClientes = async () => {
     setLoading(true);
@@ -68,10 +61,6 @@ export default function Clientes() {
   const handleSave = async (e) => {
     e.preventDefault();
     setFormError(null);
-
-    // Remove formatação (pontos e traços) antes de enviar, se o backend esperar apenas números.
-    // Se o backend espera formatado, envie 'formData' direto.
-    // O seu backend Sequelize (STRING) aceita formatado, então vamos mandar formatado mesmo.
     
     try {
       if (modalMode === 'create') {
@@ -90,7 +79,6 @@ export default function Clientes() {
           const msg = err.response.data.errors.map(e => e.msg).join(' | ');
           setFormError(msg);
         } else {
-          // Captura erro 409 (Conflito) ou 400 genérico
           setFormError(err.response.data.message || 'Erro ao salvar.');
         }
       } else {
@@ -106,13 +94,10 @@ export default function Clientes() {
       await api.delete(`/clientes/${id}`);
       fetchClientes();
     } catch (err) {
-      // Captura erro 409 se o cliente tiver reservas
       const msg = err.response?.data?.message || 'Erro ao excluir cliente.';
       alert(msg);
     }
   };
-
-  // --- UI HELPERS ---
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -136,14 +121,12 @@ export default function Clientes() {
     const { name, value } = e.target;
     let newValue = value;
 
-    // Aplica máscaras conforme o campo
     if (name === 'cpf') newValue = maskCPF(value);
     if (name === 'telefone') newValue = maskPhone(value);
 
     setFormData(prev => ({ ...prev, [name]: newValue }));
   };
 
-  // --- LÓGICA DE FILTRO ---
   const filteredClientes = clientes.filter(cliente => {
     const term = searchTerm.toLowerCase();
     return (
@@ -152,8 +135,6 @@ export default function Clientes() {
       cliente.email.toLowerCase().includes(term)
     );
   });
-
-  // --- RENDERIZAÇÃO ---
 
   return (
     <div className="container mt-4">

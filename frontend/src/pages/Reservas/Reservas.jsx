@@ -9,7 +9,6 @@ export default function Reservas() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Estado da Busca
   const [searchTerm, setSearchTerm] = useState('');
 
   const [showModal, setShowModal] = useState(false);
@@ -130,11 +129,9 @@ export default function Reservas() {
       return `${day}/${month}/${year}`;
   };
 
-  // --- LÓGICA DE FILTRO INTELIGENTE ---
   const filteredReservas = reservas.filter(reserva => {
     const term = searchTerm.toLowerCase();
     
-    // Busca segura (verifica se cliente/quarto existem antes de acessar nome/numero)
     const nomeCliente = reserva.cliente ? reserva.cliente.nome.toLowerCase() : '';
     const numeroQuarto = reserva.quarto ? reserva.quarto.numero.toLowerCase() : '';
     const status = reserva.status.toLowerCase();
@@ -215,7 +212,6 @@ export default function Reservas() {
         </div>
       )}
 
-      {/* Modal igual ao anterior */}
       <Modal show={showModal} onHide={handleCloseModal} backdrop="static" size="lg">
         <Modal.Header closeButton>
           <Modal.Title>{modalMode === 'create' ? 'Nova Reserva' : 'Editar Reserva'}</Modal.Title>

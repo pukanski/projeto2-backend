@@ -7,7 +7,6 @@ export default function Quartos() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
-  // Estado da Busca
   const [searchTerm, setSearchTerm] = useState('');
 
   const [showModal, setShowModal] = useState(false);
@@ -111,7 +110,6 @@ export default function Quartos() {
       }
   };
 
-  // --- LÓGICA DE FILTRO ---
   const filteredQuartos = quartos.filter(quarto => {
     const term = searchTerm.toLowerCase();
     return (
@@ -197,7 +195,6 @@ export default function Quartos() {
         </div>
       )}
 
-      {/* Modal permanece igual */}
       <Modal show={showModal} onHide={handleCloseModal} backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>{modalMode === 'create' ? 'Novo Quarto' : 'Editar Quarto'}</Modal.Title>

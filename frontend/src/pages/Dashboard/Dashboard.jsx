@@ -15,7 +15,6 @@ export default function Dashboard() {
 
   const fetchDashboardData = async () => {
     try {
-      // Buscamos todos os dados em paralelo para ser mais rápido
       const [resClientes, resQuartos, resReservas] = await Promise.all([
         api.get('/clientes'),
         api.get('/quartos'),
@@ -26,9 +25,7 @@ export default function Dashboard() {
       const quartos = resQuartos.data;
       const reservas = resReservas.data;
 
-      // Calcular estatísticas reais
       const quartosLivres = quartos.filter(q => q.status === 'Disponivel').length;
-      // Consideramos "Ativas" as Pendentes e Confirmadas
       const reservasAtivas = reservas.filter(r => r.status === 'Pendente' || r.status === 'Confirmada').length;
 
       setStats({
@@ -63,7 +60,6 @@ export default function Dashboard() {
 
       {error && <div className="alert alert-danger">{error}</div>}
 
-      {/* Cards de Estatísticas com a Paleta do Projeto */}
       <div className="row mb-4">
         
         {/* Card Clientes */}
@@ -134,7 +130,6 @@ export default function Dashboard() {
               🛏️ Gerenciar Quartos
             </Link>
             
-            {/* Botão de destaque com a cor secundária */}
             <Link to="/reservas" className="btn btn-lg flex-grow-1"
               style={{ backgroundColor: 'var(--cor-principal)', color: 'white' }}>
               📅 Nova Reserva

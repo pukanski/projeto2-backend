@@ -12,7 +12,6 @@ import Clientes from './pages/Clientes/Clientes.jsx';
 import Quartos from './pages/Quartos/Quartos.jsx';
 import Reservas from './pages/Reservas/Reservas.jsx';
 
-// Componentes de Estrutura
 import PrivateRoute from './components/PrivateRoute.jsx';
 import MainLayout from './components/MainLayout.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
@@ -26,7 +25,7 @@ export default function App() {
         <Route path="/esqueci-senha" element={<EsqueciSenha />} />
         <Route path="/resetar-senha/:token" element={<ResetarSenha />} />
 
-        {/* --- ROTAS PRIVADAS (Protegidas por Token e Layout) --- */}
+        {/* --- ROTAS PRIVADAS --- */}
         <Route element={<PrivateRoute><MainLayout /></PrivateRoute>}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/clientes" element={<Clientes />} />
@@ -34,7 +33,7 @@ export default function App() {
             <Route path="/reservas" element={<Reservas />} />
         </Route>
 
-        {/* Rota Padrão (Redireciona qualquer URL desconhecida para o Dashboard) */}
+        {/* Rota Padrão */}
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </AuthProvider>

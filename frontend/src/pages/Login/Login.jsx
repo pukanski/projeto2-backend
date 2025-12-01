@@ -28,8 +28,6 @@ export default function Login() {
 
   return (
     <div className="d-flex align-items-center justify-content-center vh-100 bg-light">
-      
-      {/* Card Centralizado com borda superior na cor secundária */}
       <div className="card shadow-sm" style={{ width: '400px', borderTop: '5px solid var(--cor-secundaria)' }}>
         <div className="card-body p-4">
           
